@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "Macros.h"
+#include "Shader.h"
 
 class Application
 {

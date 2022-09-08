@@ -37,10 +37,6 @@ int Application::startWindow(int w, int h, const char* t) {
 }
 
 void Application::Run() {
-
-
-
-
 	float positions[] = {
 		-0.5f, -0.5f,
 		0.5f, -0.5f,
@@ -58,10 +54,17 @@ void Application::Run() {
 	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (const void*)0));
 	GLCall(glEnableVertexAttribArray(0));
 
+	Shader shader("Shaders/Basic.shader");
+	shader.Bind();
+
+	GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 	GLCall(glBindVertexArray(0));
+	shader.Unbind();
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		shader.Bind();
 
 		glBindVertexArray(vertexArray);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
