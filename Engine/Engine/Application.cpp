@@ -43,10 +43,7 @@ void Application::Run() {
 		0.0f, 0.5f
 	};
 
-	unsigned int buffer;
-	GLCall(glGenBuffers(1, &buffer));
-	GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
-	GLCall(glBufferData(GL_ARRAY_BUFFER, 3 * 2 * sizeof(float), positions, GL_STATIC_DRAW));
+	VertexBuffer buffer(3 * 2 * sizeof(float), positions);
 
 	unsigned int vertexArray;
 	GLCall(glGenVertexArrays(1, &vertexArray));
@@ -56,9 +53,10 @@ void Application::Run() {
 
 	Shader shader("Shaders/Basic.shader");
 	shader.Bind();
+	shader.SetUniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
 
-	GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 	GLCall(glBindVertexArray(0));
+	buffer.Unbind();
 	shader.Unbind();
 	while (!glfwWindowShouldClose(window))
 	{
