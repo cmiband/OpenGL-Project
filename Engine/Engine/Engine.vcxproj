@@ -138,14 +138,17 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Macros.h" />
+    <ClInclude Include="MEngine.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Triangle.h" />
+    <ClInclude Include="VertexArray.h" />
     <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>

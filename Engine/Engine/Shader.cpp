@@ -1,4 +1,5 @@
 #include "Shader.h"
+#include "Macros.h"
 
 Shader::Shader(const std::string& filepath) {
 	ShaderType type = readShader(filepath);

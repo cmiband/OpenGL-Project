@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include <iostream>
+#include "MEngine.h"
+
 Application::Application(int width, int height, const char* title) {
 	if (startWindow(width, height, title) != 0) {
 		std::cout << "Error occured during creation of Application constructor" << std::endl;

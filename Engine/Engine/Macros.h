@@ -1,10 +1,6 @@
 #pragma once
 
 #include <GL/glew.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <fstream>
 
 #define ASSERT(x) if(!(x)) __debugbreak();
 #define GLCall(x) GLClearError();\

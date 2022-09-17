@@ -1,5 +1,7 @@
 #include "VertexBuffer.h"
 
+#include "Macros.h"
+
 VertexBuffer::VertexBuffer(unsigned int size, const void* data)
 {
 	glGenBuffers(1, &graphicsId);

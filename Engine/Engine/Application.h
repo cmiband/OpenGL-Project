@@ -1,11 +1,6 @@
 #pragma once
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
-
-#include "Macros.h"
-#include "Shader.h"
-#include "VertexBuffer.h"
 
 class Application
 {

@@ -1,13 +1,8 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#include <iostream>
-
 #include "Application.h"
 
-int main(void)
+int main()
 {
-    Application *app = new Application(640, 480, "window");
-    delete app;
+    Application app(640, 480, "window");
 
     return 0;
 }
