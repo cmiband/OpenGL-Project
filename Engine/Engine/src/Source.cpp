@@ -2,7 +2,7 @@
 
 int main()
 {
-    Application app(640, 480, "window");
+    Application app(640, 480, "Mikoshi");
 
     return 0;
 }

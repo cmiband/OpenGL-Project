@@ -3,16 +3,15 @@
 class VertexArray
 {
 private:
-	unsigned int graphicsId;
-	int count;
+	unsigned int m_graphicsId;
+	unsigned int m_count;
 
 public:
-	VertexArray(int size, bool normalized, unsigned int stride);
+	VertexArray();
 	~VertexArray();
 
-	void AddBuffer();
+	void AddBuffer(int size, bool normalized, unsigned int stride);
 	void Bind() const;
 	void Unbind() const;
-	void Enable() const;
 };
 

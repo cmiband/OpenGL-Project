@@ -42,32 +42,37 @@ void Application::Run() {
 	float positions[] = {
 		-0.5f, -0.5f,
 		0.5f, -0.5f,
-		0.0f, 0.5f
+		0.5f, 0.5f,
+		-0.5f, 0.5f
 	};
 
-	VertexBuffer buffer(3 * 2 * sizeof(float), positions);
+	unsigned int indices[] = {
+		0, 1, 2,
+		2, 3, 0
+	};
 
-	unsigned int vertexArray;
-	GLCall(glGenVertexArrays(1, &vertexArray));
-	GLCall(glBindVertexArray(vertexArray));
-	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (const void*)0));
-	GLCall(glEnableVertexAttribArray(0));
+	VertexBuffer vb(4 * 2 * sizeof(float), positions);
 
-	Shader shader("Shaders/Basic.shader");
-	shader.Bind();
+	VertexArray va;
+	va.AddBuffer(2, false, 2 * sizeof(float));
+
+	IndexBuffer ib(6 * sizeof(unsigned int), indices);
+	
+	Shader shader("res/shaders/Basic.shader");
 	shader.SetUniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
 
-	GLCall(glBindVertexArray(0));
-	buffer.Unbind();
+	vb.Unbind();
+	va.Unbind();
 	shader.Unbind();
+	ib.Unbind();
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		va.Bind();
 		shader.Bind();
-
-		glBindVertexArray(vertexArray);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		ib.Bind();
+		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
 		glfwSwapBuffers(window);
 

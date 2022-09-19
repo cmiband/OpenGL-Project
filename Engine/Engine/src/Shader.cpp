@@ -4,13 +4,14 @@
 Shader::Shader(const std::string& filepath) {
 	ShaderType type = readShader(filepath);
 
-	vertexSource = type.Vertex;
-	fragmentSource = type.Fragment;
-	graphicsId = CreateShader(vertexSource, fragmentSource);
+	m_vertexSource = type.Vertex;
+	m_fragmentSource = type.Fragment;
+	m_graphicsId = CreateShader(m_vertexSource, m_fragmentSource);
+	Bind();
 }
 
 Shader::~Shader() {
-	GLCall(glDeleteProgram(graphicsId));
+	GLCall(glDeleteProgram(m_graphicsId));
 }
 
 ShaderType Shader::readShader(const std::string& filepath) {
@@ -84,7 +85,7 @@ unsigned int Shader::CreateShader(const std::string& vs, std::string& fs)
 }
 
 void Shader::Bind() const{
-	glUseProgram(graphicsId);
+	glUseProgram(m_graphicsId);
 }
 
 void Shader::Unbind() const {
@@ -93,7 +94,7 @@ void Shader::Unbind() const {
 
 void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
 {
-	int uniLocation = glGetUniformLocation(graphicsId, name.c_str());
+	int uniLocation = glGetUniformLocation(m_graphicsId, name.c_str());
 
 	GLCall(glUniform4f(uniLocation, v0, v1, v2, v3));
 }

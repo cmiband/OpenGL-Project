@@ -17,11 +17,9 @@ enum class readType {
 class Shader
 {
 private:
-	unsigned int graphicsId;
-	std::string vertexSource;
-	std::string fragmentSource;
-	unsigned int vertex;
-	unsigned int fragment;
+	unsigned int m_graphicsId;
+	std::string m_vertexSource;
+	std::string m_fragmentSource;
 
 	ShaderType readShader(const std::string& filepath);
 	unsigned int CompileShader(const std::string &source, unsigned int type);
