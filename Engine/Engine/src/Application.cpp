@@ -1,9 +1,8 @@
 #include "Application.h"
 
-#include <iostream>
 #include "MEngine.h"
 
-Application::Application(int width, int height, const char* title) {
+Application::Application(int width, int height, std::string title) {
 	if (startWindow(width, height, title) != 0) {
 		std::cout << "Error occured during creation of Application constructor" << std::endl;
 		glfwTerminate();
@@ -16,14 +15,14 @@ Application::~Application() {
 	glfwTerminate();
 };
 
-int Application::startWindow(int w, int h, const char* t) {
+int Application::startWindow(int w, int h, std::string t) {
 	if (!glfwInit()) return -1;
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window = glfwCreateWindow(w, h, t, NULL, NULL);
+	window = glfwCreateWindow(w, h, t.c_str(), NULL, NULL);
 	if (!window) {
 		glfwTerminate();
 		return -1;
