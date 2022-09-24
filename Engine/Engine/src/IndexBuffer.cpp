@@ -2,7 +2,7 @@
 
 #include "Macros.h"
 
-IndexBuffer::IndexBuffer(int size, const void* data) : m_graphicsId(0)
+IndexBuffer::IndexBuffer(int size, const void* data) : m_graphicsId(0), m_size(size)
 {
 	GLCall(glGenBuffers(1, &m_graphicsId));
 	Bind();

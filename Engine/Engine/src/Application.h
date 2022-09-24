@@ -11,7 +11,7 @@ private:
 	int startWindow(int w, int h, std::string t);
 	void Run();
 public:
-	Application(int width, int height, std::string title);
+	Application(int width, int height, const std::string& title);
 	~Application();
 };
 

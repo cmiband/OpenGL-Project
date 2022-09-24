@@ -25,6 +25,7 @@ private:
 	unsigned int CompileShader(const std::string &source, unsigned int type);
 	unsigned int CreateShader(const std::string& vs, std::string& fs);
 public:
+	Shader() : m_graphicsId(0) {};
 	Shader(const std::string& filepath);
 	~Shader();
 	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);

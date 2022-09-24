@@ -2,7 +2,7 @@
 
 #include "MEngine.h"
 
-Application::Application(int width, int height, std::string title) {
+Application::Application(int width, int height, const std::string& title) {
 	if (startWindow(width, height, title) != 0) {
 		std::cout << "Error occured during creation of Application constructor" << std::endl;
 		glfwTerminate();
@@ -42,24 +42,24 @@ void Application::Run() {
 	float positions[] = {
 		-0.5f, -0.5f,
 		0.5f, -0.5f,
-		0.5f, 0.5f,
-		-0.5f, 0.5f
+		0.0f, 0.5f
 	};
 
 	unsigned int indices[] = {
-		0, 1, 2,
-		2, 3, 0
+		0, 1, 2
 	};
 
-	VertexBuffer vb(4 * 2 * sizeof(float), positions);
+	VertexBuffer vb(3 * 2 * sizeof(float), positions);
 
 	VertexArray va;
 	va.AddBuffer(2, false, 2 * sizeof(float));
 
-	IndexBuffer ib(6 * sizeof(unsigned int), indices);
+	IndexBuffer ib(3 * sizeof(unsigned int), indices);
 	
 	Shader shader("res/shaders/Basic.shader");
 	shader.SetUniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
+
+	Renderer render;
 
 	vb.Unbind();
 	va.Unbind();
@@ -67,12 +67,9 @@ void Application::Run() {
 	ib.Unbind();
 	while (!glfwWindowShouldClose(window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		render.Clear();
 
-		va.Bind();
-		shader.Bind();
-		ib.Bind();
-		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+		render.Draw(va, ib, shader);
 
 		glfwSwapBuffers(window);
 
