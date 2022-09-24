@@ -53,9 +53,6 @@
     <ClInclude Include="src\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\VertexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
