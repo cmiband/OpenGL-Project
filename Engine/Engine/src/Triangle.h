@@ -4,7 +4,6 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "IndexBuffer.h"
-#include "Renderer.h"
 
 #include <iostream>
 
@@ -12,18 +11,17 @@ class Triangle
 {
 private:
 	std::string m_color;
-
-	VertexBuffer* m_vb;
-	IndexBuffer* m_ib;
-	Shader* m_shader;
+	VertexBuffer m_vb;
+	IndexBuffer m_ib;
+	Shader m_shader;
 	
-	void SetColor() const;
+	void SetColor(Shader& sh) const;
 public:
 	Triangle(float posX, float posY, float size, const std::string& color, VertexArray& va);
-	~Triangle();
+	~Triangle(){};
 
-	void Draw(Renderer& r, VertexArray& va) const;
-	inline IndexBuffer* getIndexBuffer() const;
-	inline Shader* getShader() const;
+	inline VertexBuffer getVB() const { return m_vb; };
+	inline IndexBuffer getIB() const { return m_ib; };
+	inline Shader getShader() const { return m_shader; };
 };
 
