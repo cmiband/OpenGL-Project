@@ -22,6 +22,15 @@ Triangle::Triangle(float posX, float posY, float size, const std::string& color,
 	SetColor(m_shader);
 }
 
+void Triangle::Draw(Renderer& r, VertexArray& va)
+{
+	va.Bind();
+	m_ib.Bind();
+	m_shader.Bind();
+
+	r.Draw(va, m_ib, m_shader);
+}
+
 void Triangle::SetColor(Shader& sh) const{
 	if (m_color == "red") {
 		sh.SetUniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);

@@ -50,18 +50,27 @@ void Application::Run() {
 	};
 
 
+	VertexBuffer vb(3 * 2 * sizeof(float), positions);
+
 	VertexArray va;
+	va.AddBuffer(2, false, 2 * sizeof(float));
 	
-	Triangle tr(-0.5f, -0.5f, 1.0f, "red", va);
+	IndexBuffer ib(3 * sizeof(unsigned int), indices);
+
+	Shader shader("res/shaders/Basic.shader");
+	shader.SetUniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
 
 	Renderer render;
 
+	vb.Unbind();
 	va.Unbind();
+	ib.Unbind();
+	shader.Unbind();
 	while (!glfwWindowShouldClose(window))
 	{
 		render.Clear();
 
-		render.Draw(tr, va);
+		render.Draw(va, ib, shader);
 
 		glfwSwapBuffers(window);
 
