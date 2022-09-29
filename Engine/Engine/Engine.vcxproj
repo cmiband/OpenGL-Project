@@ -144,6 +144,7 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Math\Vectors.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Application.h" />
