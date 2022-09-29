@@ -12,13 +12,12 @@ Triangle::Triangle(float posX, float posY, float size, const std::string& color,
 		0,1,2
 	};
 
-	m_vb = VertexBuffer(6, &positions);
+	m_vb.AddData(3*2*sizeof(float), &positions);
 
 	va.AddBuffer(2, false, 2 * sizeof(float));
 
-	m_ib = IndexBuffer(3 * sizeof(unsigned int), &indices);
-	m_shader = Shader("res/shaders/Basic.shader");
-
+	m_ib.AddData(3 * sizeof(unsigned int), &indices);
+	m_shader.CreatePostInitialization("res/shaders/Basic.shader");
 	SetColor(m_shader);
 }
 
@@ -29,6 +28,13 @@ void Triangle::Draw(Renderer& r, VertexArray& va)
 	m_shader.Bind();
 
 	r.Draw(va, m_ib, m_shader);
+}
+
+void Triangle::UnbindPropeties() const
+{
+	m_vb.Unbind();
+	m_ib.Unbind();
+	m_shader.Unbind();
 }
 
 void Triangle::SetColor(Shader& sh) const{

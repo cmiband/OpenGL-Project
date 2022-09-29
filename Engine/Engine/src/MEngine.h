@@ -6,3 +6,4 @@
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Renderer.h"
+#include "Triangle.h"

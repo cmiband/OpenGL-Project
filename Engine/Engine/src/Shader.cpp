@@ -1,7 +1,8 @@
 #include "Shader.h"
 #include "Macros.h"
 
-Shader::Shader(const std::string& filepath) {
+Shader::Shader(const std::string& filepath) : m_graphicsId(0)
+{
 	ShaderType type = readShader(filepath);
 
 	m_vertexSource = type.Vertex;
@@ -90,6 +91,16 @@ void Shader::Bind() const{
 
 void Shader::Unbind() const {
 	glUseProgram(0);
+}
+
+void Shader::CreatePostInitialization(const std::string& filepath)
+{
+	ShaderType type = readShader(filepath);
+
+	m_vertexSource = type.Vertex;
+	m_fragmentSource = type.Fragment;
+	m_graphicsId = CreateShader(m_vertexSource, m_fragmentSource);
+	Bind();
 }
 
 void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)

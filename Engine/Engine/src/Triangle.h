@@ -22,6 +22,7 @@ public:
 	~Triangle(){};
 
 	void Draw(Renderer& r, VertexArray& va);
+	void UnbindPropeties() const;
 	inline VertexBuffer getVB() const { return m_vb; };
 	inline IndexBuffer getIB() const { return m_ib; };
 	inline Shader getShader() const { return m_shader; };

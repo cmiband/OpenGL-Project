@@ -2,7 +2,13 @@
 
 #include "Macros.h"
 
-IndexBuffer::IndexBuffer(int size, const void* data) : m_graphicsId(0), m_size(size)
+IndexBuffer::IndexBuffer() : m_graphicsId(0), m_size(0)
+{
+	GLCall(glGenBuffers(1, &m_graphicsId));
+	Bind();
+}
+
+IndexBuffer::IndexBuffer(unsigned int size, const void* data) : m_graphicsId(0), m_size(size)
 {
 	GLCall(glGenBuffers(1, &m_graphicsId));
 	Bind();
@@ -12,6 +18,12 @@ IndexBuffer::IndexBuffer(int size, const void* data) : m_graphicsId(0), m_size(s
 IndexBuffer::~IndexBuffer()
 {
 	GLCall(glDeleteBuffers(1, &m_graphicsId));
+}
+
+void IndexBuffer::AddData(unsigned int size, const void* data)
+{
+	m_size = size;
+	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
 }
 
 void IndexBuffer::Bind() const
