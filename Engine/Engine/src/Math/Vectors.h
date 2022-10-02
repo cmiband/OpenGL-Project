@@ -1,8 +1,8 @@
 #pragma once
 
-namespace me {
+namespace math {
 	template<typename T>
-	struct Vector2f {
+	struct Vector2 {
 		T x;
 		T y;
 	};
