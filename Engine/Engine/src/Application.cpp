@@ -39,28 +39,18 @@ int Application::startWindow(int w, int h, std::string t) {
 }
 
 void Application::Run() {
-	float positions[] = {
-		-0.5f, -0.5f,
-		0.5f, -0.5f,
-		0.0f, 0.5f
-	};
-
-	unsigned int indices[] = {
-		0, 1, 2
-	};
-	
 	VertexArray va;
-	Triangle triangle(-0.5f, -0.5f, 1.0f, "red", va);
+	Square square(-0.5f, -0.5f, 1.0f, "red", va);
 
 	Renderer render;
 
 	va.Unbind();
-	triangle.UnbindPropeties();
+	square.UnbindPropeties();
 	while (!glfwWindowShouldClose(window))
 	{
 		render.Clear();
 
-		triangle.Draw(render, va);
+		square.Draw(render, va);
 
 		glfwSwapBuffers(window);
 

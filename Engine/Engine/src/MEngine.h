@@ -7,3 +7,4 @@
 #include "IndexBuffer.h"
 #include "Renderer.h"
 #include "Triangle.h"
+#include "Square.h"
