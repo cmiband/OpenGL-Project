@@ -19,7 +19,7 @@ private:
 	
 	void SetColor(Shader& sh) const;
 public:
-	Triangle(float posX, float posY, float size, const std::string& color, VertexArray& va);
+	Triangle(const math::Vector2<float>& position, float size, const std::string& color, VertexArray& va);
 	~Triangle(){};
 
 	void Draw(Renderer& r, VertexArray& va);

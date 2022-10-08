@@ -1,11 +1,11 @@
 #include "Triangle.h"
 
-Triangle::Triangle(float posX, float posY, float size, const std::string& color, VertexArray& va) : m_color(color)
+Triangle::Triangle(const math::Vector2<float>& position, float size, const std::string& color, VertexArray& va) : m_color(color)
 {
 	float positions[] = {
-		posX, posY,
-		posX + size, posY,
-		posX + (size / 2), posY + size
+		position.x, position.y,
+		position.x + size, position.y,
+		position.x + (size / 2), position.y + size
 	};
 
 	unsigned int indices[] = {

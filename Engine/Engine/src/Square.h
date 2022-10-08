@@ -5,6 +5,7 @@
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Renderer.h"
+#include "Math/Vectors.h"
 
 class Square
 {
@@ -16,7 +17,7 @@ private:
 
 	void SetColor(Shader& sh) const;
 public:
-	Square(float posX, float posY, float size, const std::string& color, VertexArray& va);
+	Square(const math::Vector2<float> &position, float size, const std::string& color, VertexArray& va);
 	~Square() {};
 
 	void Draw(Renderer& r, VertexArray& va);

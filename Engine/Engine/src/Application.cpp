@@ -40,7 +40,7 @@ int Application::startWindow(int w, int h, std::string t) {
 
 void Application::Run() {
 	VertexArray va;
-	Square square(-0.5f, -0.5f, 1.0f, "red", va);
+	Square square(math::Vector2<float>{-1.0f, -1.0f}, 1.0f, "red", va);
 
 	Renderer render;
 

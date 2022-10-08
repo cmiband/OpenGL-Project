@@ -1,12 +1,12 @@
 #include "Square.h"
 
-Square::Square(float posX, float posY, float size, const std::string& color, VertexArray& va) : m_color(color)
+Square::Square(const math::Vector2<float>& position, float size, const std::string& color, VertexArray& va) : m_color(color)
 {
-	float positions[8] = {
-		posX, posY,
-		posX + size,posY,
-		posX + size,posY + size,
-		posX, posY+size
+	float positions[] = {
+		position.x, position.y,
+		position.x+size, + position.y,
+		position.x + size,position.y + size,
+		position.x, position.y+size
 	};
 
 	unsigned int indices[6] = {
