@@ -15,7 +15,7 @@ Application::~Application() {
 	glfwTerminate();
 };
 
-int Application::startWindow(int w, int h, std::string t) {
+int Application::startWindow(int w, int h, const std::string &t) {
 	if (!glfwInit()) return -1;
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -40,17 +40,21 @@ int Application::startWindow(int w, int h, std::string t) {
 
 void Application::Run() {
 	VertexArray va;
-	Square square(math::Vector2<float>{-1.0f, -1.0f}, 1.0f, "red", va);
+	Triangle triangle(math::Vector2<float>{0.6f, 0.6f}, 0.4f, "red", va);
 
 	Renderer render;
 
 	va.Unbind();
-	square.UnbindPropeties();
+	triangle.UnbindPropeties();
+
+	float test = -0.001f;
 	while (!glfwWindowShouldClose(window))
 	{
 		render.Clear();
 
-		square.Draw(render, va);
+		triangle.Move(math::Vector2<float>{test, test});
+
+		triangle.Draw(render, va);
 
 		glfwSwapBuffers(window);
 

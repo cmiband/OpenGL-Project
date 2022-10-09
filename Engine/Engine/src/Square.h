@@ -14,13 +14,17 @@ private:
 	VertexBuffer m_vb;
 	IndexBuffer m_ib;
 	Shader m_shader;
+	float *positions;
+	float m_size;
 
 	void SetColor(Shader& sh) const;
+	void ChangePositionsArray(const math::Vector2<float> &vec);
 public:
 	Square(const math::Vector2<float> &position, float size, const std::string& color, VertexArray& va);
-	~Square() {};
+	~Square() { delete[] positions; };
 
 	void Draw(Renderer& r, VertexArray& va);
 	void UnbindPropeties() const;
+	void Move(const math::Vector2<float>& vector);
 };
 
