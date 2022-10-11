@@ -40,7 +40,7 @@ int Application::startWindow(int w, int h, const std::string &t) {
 
 void Application::Run() {
 	VertexArray va;
-	Triangle triangle(math::Vector2<float>{0.6f, 0.6f}, 0.4f, "red", va);
+	Triangle triangle(math::Vector2<float>{0.6f, 0.6f}, 0.4f, math::Vector4<float>{0.0f, 0.0f, 1.0f, 0.0f}, va);
 
 	Renderer render;
 

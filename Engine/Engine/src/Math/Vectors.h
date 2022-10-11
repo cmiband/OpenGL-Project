@@ -7,4 +7,11 @@ namespace math {
 		T y;
 	};
 
+	template<typename T>
+	struct Vector4 {
+		T r;
+		T g;
+		T b;
+		T a;
+	};
 }

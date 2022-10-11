@@ -10,18 +10,17 @@
 class Square
 {
 private:
-	std::string m_color;
 	VertexBuffer m_vb;
 	IndexBuffer m_ib;
 	Shader m_shader;
-	float *positions;
+	float *m_positions;
 	float m_size;
 
-	void SetColor(Shader& sh) const;
+	void SetColor(Shader& sh, const math::Vector4<float>& c) const;
 	void ChangePositionsArray(const math::Vector2<float> &vec);
 public:
-	Square(const math::Vector2<float> &position, float size, const std::string& color, VertexArray& va);
-	~Square() { delete[] positions; };
+	Square(const math::Vector2<float> &position, float size, const math::Vector4<float>& color, VertexArray& va);
+	~Square() { delete[] m_positions; };
 
 	void Draw(Renderer& r, VertexArray& va);
 	void UnbindPropeties() const;

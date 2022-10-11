@@ -1,8 +1,8 @@
 #include "Triangle.h"
 
-Triangle::Triangle(const math::Vector2<float>& position, float size, const std::string& color, VertexArray& va) : m_color(color)
+Triangle::Triangle(const math::Vector2<float>& position, float size, const math::Vector4<float>& color, VertexArray& va)
 {
-	positions = new float[6] {
+	m_positions = new float[6] {
 		position.x, position.y,
 		position.x + size, position.y,
 		position.x + (size / 2), position.y + size
@@ -12,13 +12,13 @@ Triangle::Triangle(const math::Vector2<float>& position, float size, const std::
 		0,1,2
 	};
 
-	m_vb.AddData(3*2*sizeof(float), positions);
+	m_vb.AddData(3*2*sizeof(float), m_positions);
 
 	va.AddBuffer(2, false, 2 * sizeof(float));
 
 	m_ib.AddData(3 * sizeof(unsigned int), &indices);
 	m_shader.CreatePostInitialization("res/shaders/Basic.shader");
-	SetColor(m_shader);
+	SetColor(m_shader, color);
 }
 
 void Triangle::Draw(Renderer& r, VertexArray& va)
@@ -41,26 +41,21 @@ void Triangle::Move(const math::Vector2<float>& vector)
 {
 	ChangePositionsArray(vector);
 	m_vb.Bind();
-	m_vb.AddData(3 * 2 * sizeof(float), positions);
+	m_vb.AddData(3 * 2 * sizeof(float), m_positions);
 }
 
 void Triangle::ChangePositionsArray(const math::Vector2<float>& vec)
 {
-	positions[0] = positions[0] + vec.x;
-	positions[1] = positions[1] + vec.y;
-	positions[2] = positions[2] + vec.x;
-	positions[3] = positions[3] + vec.y;
-	positions[4] = positions[4] + vec.x;
-	positions[5] = positions[5] + vec.y;
+	m_positions[0] = m_positions[0] + vec.x;
+	m_positions[1] = m_positions[1] + vec.y;
+	m_positions[2] = m_positions[2] + vec.x;
+	m_positions[3] = m_positions[3] + vec.y;
+	m_positions[4] = m_positions[4] + vec.x;
+	m_positions[5] = m_positions[5] + vec.y;
 }
 
-void Triangle::SetColor(Shader& sh) const{
-	if (m_color == "red") {
-		sh.SetUniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
-	}
-	else {
-		std::cout << "Given color is not supported" << std::endl;
-	}
+void Triangle::SetColor(Shader& sh, const math::Vector4<float>& c) const{
+	sh.SetUniform4f("u_Color", c);
 }
 
 

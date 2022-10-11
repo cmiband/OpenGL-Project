@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 
+#include "Math/Vectors.h"
+
 struct ShaderType {
 	std::string Vertex;
 	std::string Fragment;
@@ -28,7 +30,7 @@ public:
 	Shader() : m_graphicsId(0) {};
 	Shader(const std::string& filepath);
 	~Shader();
-	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+	void SetUniform4f(const std::string& name, const math::Vector4<float>& color);
 
 	void Bind() const;
 	void Unbind() const;

@@ -12,17 +12,16 @@
 class Triangle
 {
 private:
-	std::string m_color;
 	VertexBuffer m_vb;
 	IndexBuffer m_ib;
 	Shader m_shader;
-	float* positions;
+	float* m_positions;
 	
-	void SetColor(Shader& sh) const;
+	void SetColor(Shader& sh, const math::Vector4<float>& c) const;
 	void ChangePositionsArray(const math::Vector2<float>& vec);
 public:
-	Triangle(const math::Vector2<float>& position, float size, const std::string& color, VertexArray& va);
-	~Triangle(){};
+	Triangle(const math::Vector2<float>& position, float size, const math::Vector4<float>& color, VertexArray& va);
+	~Triangle() { delete[] m_positions; };
 
 	void Draw(Renderer& r, VertexArray& va);
 	void UnbindPropeties() const;
