@@ -8,7 +8,7 @@ namespace math {
 	};
 
 	template<typename T>
-	struct Vector4 {
+	struct Color4 {
 		T r;
 		T g;
 		T b;

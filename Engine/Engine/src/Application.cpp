@@ -40,21 +40,23 @@ int Application::startWindow(int w, int h, const std::string &t) {
 
 void Application::Run() {
 	VertexArray va;
-	Triangle triangle(math::Vector2<float>{0.6f, 0.6f}, 0.4f, math::Vector4<float>{0.0f, 0.0f, 1.0f, 0.0f}, va);
+	Triangle triangle(math::Vector2<float>{0.6f, 0.6f}, 0.4f, math::Color4<float>{0.0f, 0.0f, 1.0f, 0.0f}, va);
+	VertexArray va2;
+	Square square(math::Vector2<float>{0.0f, 0.0f}, 0.5f, math::Color4<float>{0.5f, 0.4f, 0.1f, 0.0f}, va2);
 
 	Renderer render;
 
 	va.Unbind();
+	va2.Unbind();
 	triangle.UnbindPropeties();
+	square.UnbindPropeties();
 
-	float test = -0.001f;
 	while (!glfwWindowShouldClose(window))
 	{
 		render.Clear();
-
-		triangle.Move(math::Vector2<float>{test, test});
-
 		triangle.Draw(render, va);
+		
+		square.Draw(render, va2);
 
 		glfwSwapBuffers(window);
 

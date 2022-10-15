@@ -16,14 +16,15 @@ private:
 	float *m_positions;
 	float m_size;
 
-	void SetColor(Shader& sh, const math::Vector4<float>& c) const;
+	void SetColor(Shader& sh, const math::Color4<float>& c) const;
 	void ChangePositionsArray(const math::Vector2<float> &vec);
 public:
-	Square(const math::Vector2<float> &position, float size, const math::Vector4<float>& color, VertexArray& va);
+	Square(const math::Vector2<float> &position, float size, const math::Color4<float>& color, VertexArray& va);
 	~Square() { delete[] m_positions; };
 
 	void Draw(Renderer& r, VertexArray& va);
 	void UnbindPropeties() const;
 	void Move(const math::Vector2<float>& vector);
+	void SetPosition(const math::Vector2<float>& vector);
 };
 

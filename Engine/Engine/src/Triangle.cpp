@@ -1,6 +1,6 @@
 #include "Triangle.h"
 
-Triangle::Triangle(const math::Vector2<float>& position, float size, const math::Vector4<float>& color, VertexArray& va)
+Triangle::Triangle(const math::Vector2<float>& position, float size, const math::Color4<float>& color, VertexArray& va) : m_size(size)
 {
 	m_positions = new float[6] {
 		position.x, position.y,
@@ -44,6 +44,19 @@ void Triangle::Move(const math::Vector2<float>& vector)
 	m_vb.AddData(3 * 2 * sizeof(float), m_positions);
 }
 
+void Triangle::SetPosition(const math::Vector2<float>& vector)
+{
+	m_positions[0] = vector.x;
+	m_positions[1] = vector.y;
+	m_positions[2] = vector.x + m_size;
+	m_positions[3] = vector.y;
+	m_positions[4] = vector.x + (m_size/2);
+	m_positions[5] = vector.y + m_size;
+
+	m_vb.Bind();
+	m_vb.AddData(3 * 2 * sizeof(float), m_positions);
+}
+
 void Triangle::ChangePositionsArray(const math::Vector2<float>& vec)
 {
 	m_positions[0] = m_positions[0] + vec.x;
@@ -54,7 +67,7 @@ void Triangle::ChangePositionsArray(const math::Vector2<float>& vec)
 	m_positions[5] = m_positions[5] + vec.y;
 }
 
-void Triangle::SetColor(Shader& sh, const math::Vector4<float>& c) const{
+void Triangle::SetColor(Shader& sh, const math::Color4<float>& c) const{
 	sh.SetUniform4f("u_Color", c);
 }
 
