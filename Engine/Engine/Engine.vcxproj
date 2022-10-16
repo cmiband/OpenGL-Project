@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EntityContainer.cpp" />
     <ClCompile Include="src\Square.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EntityContainer.h" />
     <ClInclude Include="src\Square.h" />
     <ClInclude Include="src\Math\Vectors.h" />
     <ClInclude Include="src\Renderer.h" />

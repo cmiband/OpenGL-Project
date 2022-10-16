@@ -1,6 +1,7 @@
 #include "Application.h"
 
 #include "MEngine.h"
+#include <vector>
 
 Application::Application(int width, int height, const std::string& title) {
 	if (startWindow(width, height, title) != 0) {
@@ -39,6 +40,7 @@ int Application::startWindow(int w, int h, const std::string &t) {
 }
 
 void Application::Run() {
+	EntityContainer entities;
 	VertexArray va;
 	Triangle triangle(math::Vector2<float>{0.6f, 0.6f}, 0.4f, math::Color4<float>{0.0f, 0.0f, 1.0f, 0.0f}, va);
 	VertexArray va2;
