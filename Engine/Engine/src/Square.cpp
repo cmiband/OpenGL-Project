@@ -1,6 +1,6 @@
 #include "Square.h"
 
-Square::Square(const math::Vector2<float>& position, float size, const math::Color4<float>& color, VertexArray& va) : m_size(size)
+Square::Square(const math::Vector2<float>& position, float size, const math::Color4<float>& color) : m_size(size)
 {
 	m_positions = new float[8] {
 		position.x, position.y,
@@ -16,24 +16,25 @@ Square::Square(const math::Vector2<float>& position, float size, const math::Col
 
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 	
-	va.AddBuffer(2, false, 2 * sizeof(float));
+	m_va.AddBuffer(2, false, 2 * sizeof(float));
 
 	m_ib.AddData(6 * sizeof(unsigned int), indices);
 	m_shader.CreatePostInitialization("res/shaders/Basic.shader");
 	SetColor(m_shader, color);
 }
 
-void Square::Draw(Renderer& r, VertexArray& va)
+void Square::Draw(Renderer& r)
 {
-	va.Bind();
+	m_va.Bind();
 	m_ib.Bind();
 	m_shader.Bind();
 
-	r.Draw(va, m_ib, m_shader);
+	r.Draw(m_va, m_ib, m_shader);
 }
 
 void Square::UnbindPropeties() const
 {
+	m_va.Unbind();
 	m_vb.Unbind();
 	m_ib.Unbind();
 	m_shader.Unbind();

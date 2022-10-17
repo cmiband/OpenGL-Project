@@ -12,6 +12,7 @@
 class Triangle
 {
 private:
+	VertexArray m_va;
 	VertexBuffer m_vb;
 	IndexBuffer m_ib;
 	Shader m_shader;
@@ -21,10 +22,10 @@ private:
 	void SetColor(Shader& sh, const math::Color4<float>& c) const;
 	void ChangePositionsArray(const math::Vector2<float>& vec);
 public:
-	Triangle(const math::Vector2<float>& position, float size, const math::Color4<float>& color, VertexArray& va);
+	Triangle(const math::Vector2<float>& position, float size, const math::Color4<float>& color);
 	~Triangle() { delete[] m_positions; };
 
-	void Draw(Renderer& r, VertexArray& va);
+	void Draw(Renderer& r);
 	void UnbindPropeties() const;
 	void Move(const math::Vector2<float>& vector);
 	void SetPosition(const math::Vector2<float>& vector);

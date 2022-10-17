@@ -1,6 +1,6 @@
 #include "Triangle.h"
 
-Triangle::Triangle(const math::Vector2<float>& position, float size, const math::Color4<float>& color, VertexArray& va) : m_size(size)
+Triangle::Triangle(const math::Vector2<float>& position, float size, const math::Color4<float>& color) : m_size(size)
 {
 	m_positions = new float[6] {
 		position.x, position.y,
@@ -14,24 +14,25 @@ Triangle::Triangle(const math::Vector2<float>& position, float size, const math:
 
 	m_vb.AddData(3*2*sizeof(float), m_positions);
 
-	va.AddBuffer(2, false, 2 * sizeof(float));
+	m_va.AddBuffer(2, false, 2 * sizeof(float));
 
 	m_ib.AddData(3 * sizeof(unsigned int), &indices);
 	m_shader.CreatePostInitialization("res/shaders/Basic.shader");
 	SetColor(m_shader, color);
 }
 
-void Triangle::Draw(Renderer& r, VertexArray& va)
+void Triangle::Draw(Renderer& r)
 {
-	va.Bind();
+	m_va.Bind();
 	m_ib.Bind();
 	m_shader.Bind();
 
-	r.Draw(va, m_ib, m_shader);
+	r.Draw(m_va, m_ib, m_shader);
 }
 
 void Triangle::UnbindPropeties() const
 {
+	m_va.Unbind();
 	m_vb.Unbind();
 	m_ib.Unbind();
 	m_shader.Unbind();
