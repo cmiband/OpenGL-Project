@@ -45,9 +45,6 @@
     <ClCompile Include="src\Square.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EntityContainer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -81,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Square.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EntityContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Math\vendor\glm\detail\_features.hpp">

@@ -9,6 +9,13 @@ void Renderer::Draw(VertexArray& va, IndexBuffer& ib, Shader& shader) const{
 	GLCall(glDrawElements(GL_TRIANGLES, ib.getSize(), GL_UNSIGNED_INT, nullptr));
 }
 
+void Renderer::Swap(GLFWwindow* w)
+{
+	glfwSwapBuffers(w);
+
+	glfwPollEvents();
+}
+
 void Renderer::Clear() const {
 	GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }

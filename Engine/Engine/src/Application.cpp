@@ -39,24 +39,21 @@ int Application::startWindow(int w, int h, const std::string &t) {
 }
 
 void Application::Run() {
-	EntityContainer entities;
 	Triangle triangle(math::Vector2<float>{-0.5f, -0.5f}, 0.5f, math::Color4<float>{1.0f, 0.5f, 0.5f, 1.0f});
 	Square square(math::Vector2<float>{0.0f, 0.0f}, 0.5f, math::Color4<float>{0.7f, 0.6f, 0.5f, 1.0f});
 
-	Renderer render;
-
+	Renderer renderer;
+	
 	triangle.UnbindPropeties();
 	square.UnbindPropeties();
 
 	while (!glfwWindowShouldClose(window))
 	{
-		render.Clear();
-		square.Draw(render);
+		renderer.Clear();
+		square.Draw(renderer);
 
-		triangle.Draw(render);
+		triangle.Draw(renderer);
 
-		glfwSwapBuffers(window);
-
-		glfwPollEvents();
+		renderer.Swap(window);
 	}
 }
