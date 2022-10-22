@@ -4,7 +4,6 @@ class VertexArray
 {
 private:
 	unsigned int m_graphicsId;
-	unsigned int m_count;
 
 public:
 	VertexArray();

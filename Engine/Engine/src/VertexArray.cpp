@@ -2,7 +2,7 @@
 
 #include "Macros.h"
 
-VertexArray::VertexArray() : m_count(0), m_graphicsId(0) {
+VertexArray::VertexArray() : m_graphicsId(0) {
 	GLCall(glGenVertexArrays(1, &m_graphicsId));
 	Bind();
 }
@@ -12,9 +12,8 @@ VertexArray::~VertexArray() {
 }
 
 void VertexArray::AddBuffer(int size, bool normalized, unsigned int stride) {
-	GLCall(glVertexAttribPointer(m_count, size, GL_FLOAT, normalized, stride, (const void*)(m_count*size*sizeof(float))));
-	GLCall(glEnableVertexAttribArray(m_count));
-	m_count++;
+	GLCall(glVertexAttribPointer(0, size, GL_FLOAT, normalized, stride, (const void*)0));
+	GLCall(glEnableVertexAttribArray(0));
 }
 
 void VertexArray::Bind() const{
