@@ -23,10 +23,6 @@ Triangle::Triangle(const math::Vector2<float>& position, float size, const math:
 
 void Triangle::Draw(Renderer& r)
 {
-	m_va.Bind();
-	m_ib.Bind();
-	m_shader.Bind();
-
 	r.Draw(m_va, m_ib, m_shader);
 }
 

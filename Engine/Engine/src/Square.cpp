@@ -25,10 +25,6 @@ Square::Square(const math::Vector2<float>& position, float size, const math::Col
 
 void Square::Draw(Renderer& r)
 {
-	m_va.Bind();
-	m_ib.Bind();
-	m_shader.Bind();
-
 	r.Draw(m_va, m_ib, m_shader);
 }
 

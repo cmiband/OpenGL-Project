@@ -40,6 +40,8 @@ int Application::startWindow(int w, int h, const std::string &t) {
 }
 
 void Application::Run() {
+	glm::vec2 vec{1.0f, 1.0f};
+	std::cout << vec.x;
 	Triangle triangle(math::Vector2<float>{0.0f, -0.5f}, 0.5f, math::Color4<float>{1.0f, 0.5f, 0.5f, 1.0f});
 
 	Renderer renderer;
