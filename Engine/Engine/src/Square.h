@@ -6,6 +6,7 @@
 #include "IndexBuffer.h"
 #include "Renderer.h"
 #include "Math/Vectors.h"
+#include "glm.hpp"
 
 class Square
 {
@@ -18,14 +19,14 @@ private:
 	float m_size;
 
 	void SetColor(Shader& sh, const math::Color4<float>& c) const;
-	void ChangePositionsArray(const math::Vector2<float> &vec);
+	void ChangePositionsArray(const glm::vec2& vec);
 public:
-	Square(const math::Vector2<float> &position, float size, const math::Color4<float>& color);
+	Square(const glm::vec2& position, float size, const math::Color4<float>& color);
 	~Square() { delete[] m_positions; };
 
 	void Draw(Renderer& r);
 	void UnbindPropeties() const;
-	void Move(const math::Vector2<float>& vector);
-	void SetPosition(const math::Vector2<float>& vector);
+	void Move(const glm::vec2& vector);
+	void SetPosition(const glm::vec2& vector);
 };
 

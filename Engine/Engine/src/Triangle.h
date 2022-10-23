@@ -6,6 +6,7 @@
 #include "IndexBuffer.h"
 #include "Renderer.h"
 #include "Math/Vectors.h"
+#include "glm.hpp"
 
 #include <iostream>
 
@@ -19,15 +20,15 @@ private:
 	float* m_positions;
 	float m_size;
 	
-	void SetColor(Shader& sh, const math::Color4<float>& c) const;
-	void ChangePositionsArray(const math::Vector2<float>& vec);
+	void SetColor(Shader& sh, const math::Color4<float>& vec) const;
+	void ChangePositionsArray(const glm::vec2& c);
 public:
-	Triangle(const math::Vector2<float>& position, float size, const math::Color4<float>& color);
+	Triangle(const glm::vec2& position, float size, const math::Color4<float>& color);
 	~Triangle() { delete[] m_positions; };
 
 	void Draw(Renderer& r);
 	void UnbindPropeties() const;
-	void Move(const math::Vector2<float>& vector);
-	void SetPosition(const math::Vector2<float>& vector);
+	void Move(const glm::vec2& vector);
+	void SetPosition(const glm::vec2& vector);
 };
 

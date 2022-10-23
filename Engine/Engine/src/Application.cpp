@@ -40,19 +40,19 @@ int Application::startWindow(int w, int h, const std::string &t) {
 }
 
 void Application::Run() {
-	glm::vec2 vec{1.0f, 1.0f};
-	std::cout << vec.x;
-	Triangle triangle(math::Vector2<float>{0.0f, -0.5f}, 0.5f, math::Color4<float>{1.0f, 0.5f, 0.5f, 1.0f});
+	glm::vec2 x{ 0.0f,0.0f };
+	
+	Square square(x, 1.0f, math::Color4<float>{ 1.0f, 0.5f, 0.1f, 1.0f });
 
 	Renderer renderer;
 	
-	triangle.UnbindPropeties();
+	square.UnbindPropeties();
 
 	while (!glfwWindowShouldClose(window))
 	{
 		renderer.Clear();
 
-		triangle.Draw(renderer);
+		square.Draw(renderer);
 
 		renderer.Swap(window);
 	}

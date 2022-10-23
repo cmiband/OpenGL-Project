@@ -1,6 +1,6 @@
 #include "Square.h"
 
-Square::Square(const math::Vector2<float>& position, float size, const math::Color4<float>& color) : m_size(size)
+Square::Square(const glm::vec2& position, float size, const math::Color4<float>& color) : m_size(size)
 {
 	m_positions = new float[8] {
 		position.x, position.y,
@@ -36,14 +36,14 @@ void Square::UnbindPropeties() const
 	m_shader.Unbind();
 }
 
-void Square::Move(const math::Vector2<float>& vector)
+void Square::Move(const glm::vec2& vector)
 {
 	ChangePositionsArray(vector);
 	m_vb.Bind();
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 }
 
-void Square::SetPosition(const math::Vector2<float>& vector)
+void Square::SetPosition(const glm::vec2& vector)
 {
 	m_positions[0] = vector.x;
 	m_positions[1] = vector.y;
@@ -58,7 +58,7 @@ void Square::SetPosition(const math::Vector2<float>& vector)
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 }
 
-void Square::ChangePositionsArray(const math::Vector2<float>& vec)
+void Square::ChangePositionsArray(const glm::vec2& vec)
 {
 	m_positions[0] = m_positions[0] + vec.x;
 	m_positions[1] = m_positions[1] + vec.y;

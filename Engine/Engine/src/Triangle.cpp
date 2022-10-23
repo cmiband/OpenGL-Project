@@ -1,6 +1,6 @@
 #include "Triangle.h"
 
-Triangle::Triangle(const math::Vector2<float>& position, float size, const math::Color4<float>& color) : m_size(size)
+Triangle::Triangle(const glm::vec2& position, float size, const math::Color4<float>& color) : m_size(size)
 {
 	m_positions = new float[6] {
 		position.x, position.y,
@@ -34,14 +34,14 @@ void Triangle::UnbindPropeties() const
 	m_shader.Unbind();
 }
 
-void Triangle::Move(const math::Vector2<float>& vector)
+void Triangle::Move(const glm::vec2& vector)
 {
 	ChangePositionsArray(vector);
 	m_vb.Bind();
 	m_vb.AddData(3 * 2 * sizeof(float), m_positions);
 }
 
-void Triangle::SetPosition(const math::Vector2<float>& vector)
+void Triangle::SetPosition(const glm::vec2& vector)
 {
 	m_positions[0] = vector.x;
 	m_positions[1] = vector.y;
@@ -54,7 +54,7 @@ void Triangle::SetPosition(const math::Vector2<float>& vector)
 	m_vb.AddData(3 * 2 * sizeof(float), m_positions);
 }
 
-void Triangle::ChangePositionsArray(const math::Vector2<float>& vec)
+void Triangle::ChangePositionsArray(const glm::vec2& vec)
 {
 	m_positions[0] = m_positions[0] + vec.x;
 	m_positions[1] = m_positions[1] + vec.y;
