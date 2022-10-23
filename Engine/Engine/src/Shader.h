@@ -5,6 +5,8 @@
 #include <string>
 
 #include "Math/Vectors.h"
+#include "glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 struct ShaderType {
 	std::string Vertex;
@@ -30,7 +32,9 @@ public:
 	Shader() : m_graphicsId(0) {};
 	Shader(const std::string& filepath);
 	~Shader();
+
 	void SetUniform4f(const std::string& name, const math::Color4<float>& color);
+	void SetUniformMatf(const std::string& name, const glm::mat4& matrix);
 
 	void Bind() const;
 	void Unbind() const;

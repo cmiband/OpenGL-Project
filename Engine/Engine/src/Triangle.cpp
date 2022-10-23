@@ -1,4 +1,5 @@
 #include "Triangle.h"
+#include "Matrix.h"
 
 Triangle::Triangle(const glm::vec2& position, float size, const math::Color4<float>& color) : m_size(size)
 {
@@ -19,6 +20,10 @@ Triangle::Triangle(const glm::vec2& position, float size, const math::Color4<flo
 	m_ib.AddData(3 * sizeof(unsigned int), &indices);
 	m_shader.CreatePostInitialization("res/shaders/Basic.shader");
 	SetColor(m_shader, color);
+
+	Matrix matrix(640.0f, 640.0f);
+	
+	m_shader.SetUniformMatf("u_MVP", matrix.getMVP());
 }
 
 void Triangle::Draw(Renderer& r)

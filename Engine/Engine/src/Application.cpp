@@ -40,19 +40,20 @@ int Application::startWindow(int w, int h, const std::string &t) {
 }
 
 void Application::Run() {
-	glm::vec2 x{ 0.0f,0.0f };
+	glm::vec2 start{ 640.0f,640.0f };
+	glm::vec2 end{ 0.0f, 0.0f };
 	
-	Square square(x, 1.0f, math::Color4<float>{ 1.0f, 0.5f, 0.1f, 1.0f });
+	Line line(start, end, math::Color4<float>{1.0f, 0.5f, 0.5f, 1.0f});
 
 	Renderer renderer;
 	
-	square.UnbindPropeties();
+	line.UnbindPropeties();
 
 	while (!glfwWindowShouldClose(window))
 	{
 		renderer.Clear();
 
-		square.Draw(renderer);
+		line.Draw(renderer);
 
 		renderer.Swap(window);
 	}

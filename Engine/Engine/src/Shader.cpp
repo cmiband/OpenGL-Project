@@ -103,11 +103,15 @@ void Shader::CreatePostInitialization(const std::string& filepath)
 	Bind();
 }
 
+void Shader::SetUniformMatf(const std::string& name, const glm::mat4& matrix) {
+	int uniLocation = glGetUniformLocation(m_graphicsId, name.c_str());
+
+	GLCall(glUniformMatrix4fv(uniLocation, 1, GL_FALSE, &matrix[0][0]));
+}
+
 void Shader::SetUniform4f(const std::string& name, const math::Color4<float>& color)
 {
 	int uniLocation = glGetUniformLocation(m_graphicsId, name.c_str());
 
 	GLCall(glUniform4f(uniLocation, color.r, color.g, color.b, color.a));
 }
-
-

@@ -13,6 +13,7 @@ public:
 	~Renderer() {};
 
 	void Draw(VertexArray& va, IndexBuffer& ib, Shader& shader) const;
+	void DrawLine(VertexArray& va, IndexBuffer& ib, Shader& shader) const;
 	void Swap(GLFWwindow* w);
 	void Clear() const;
 };

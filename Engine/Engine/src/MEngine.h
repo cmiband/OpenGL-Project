@@ -9,3 +9,5 @@
 #include "Square.h"
 #include "Math/Vectors.h"
 #include "glm.hpp"
+#include "Matrix.h"
+#include "Line.h"
