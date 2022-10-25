@@ -1,6 +1,8 @@
 #include "Application.h"
 
 #include "MEngine.h"
+#include <math.h>
+#include <corecrt_math_defines.h>
 
 Application::Application(int width, int height, const std::string& title) {
 	if (startWindow(width, height, title) != 0) {
@@ -39,21 +41,37 @@ int Application::startWindow(int w, int h, const std::string &t) {
 	return 0;
 }
 
+void DrawCircle(float x, float y, float r, int sides) {
+	const int numberOfVertices = sides + 2;
+	float doublePi = 2.0f * M_PI;
+
+	float *circleVerticesX = new float[numberOfVertices];
+	float *circleVerticesY = new float[numberOfVertices];
+
+	circleVerticesX[0] = x;
+	circleVerticesY[0] = y;
+
+	for (int i = 1; i < numberOfVertices; i++) {
+		circleVerticesX[1] = x + (r * cos(i * doublePi / sides));
+		circleVerticesY[1] = y + (r * sin(i * doublePi / sides));
+	}
+
+	float *allCircleVertices = new float[numberOfVertices * 2];
+	for (int i = 0; i < numberOfVertices; i++) {
+		allCircleVertices[i * 2] = circleVerticesX[i];
+		allCircleVertices[(i * 2)+1] = circleVerticesY[i];
+	}
+}
+
 void Application::Run() {
-	glm::vec2 start{ 640.0f,640.0f };
-	glm::vec2 end{ 0.0f, 0.0f };
-	
-	Line line(start, end, math::Color4<float>{1.0f, 0.5f, 0.5f, 1.0f});
 
 	Renderer renderer;
-	
-	line.UnbindPropeties();
 
 	while (!glfwWindowShouldClose(window))
 	{
 		renderer.Clear();
 
-		line.Draw(renderer);
+		DrawCircle(0, 0, 0.5f, 360);
 
 		renderer.Swap(window);
 	}
