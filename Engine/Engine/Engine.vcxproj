@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Circle.cpp" />
     <ClCompile Include="src\Line.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="src\Square.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Circle.h" />
     <ClInclude Include="src\Line.h" />
     <ClInclude Include="src\Matrix.h" />
     <ClInclude Include="src\glm\common.hpp" />

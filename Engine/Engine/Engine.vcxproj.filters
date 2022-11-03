@@ -51,6 +51,9 @@
     <ClCompile Include="src\Line.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Circle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -1806,6 +1809,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Line.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Circle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
