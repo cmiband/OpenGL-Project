@@ -19,7 +19,7 @@ private:
 	float m_size;
 
 	void SetColor(Shader& sh, const math::Color4<float>& c) const;
-	void ChangePositionsArray(const glm::vec2& vec);
+	void AddVectorToPositions(const glm::vec2& vec);
 public:
 	Square(const glm::vec2& position, float size, const math::Color4<float>& color);
 	~Square() { delete[] m_positions; };

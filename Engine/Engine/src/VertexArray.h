@@ -1,8 +1,5 @@
 #pragma once
 
-#define SCREEN_WIDTH 640.0f
-#define SCREEN_HEIGTH 640.0f
-
 class VertexArray
 {
 private:

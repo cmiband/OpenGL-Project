@@ -45,11 +45,10 @@ void Application::Run() {
 
 	Renderer renderer;
 
-	glm::vec2 x = { 0.0f, 0.0f };
-
-	Circle circle(x, 0.5f, math::Color4<float>{0.5f, 0.1f, 7.0f, 1.0f});
+	Circle circle(glm::vec2{100.0f, 100.0f}, 50.0f, math::Color4<float>{0.5f, 0.1f, 7.0f, 1.0f});
 
 	circle.UnbindPropeties();
+
 	while (!glfwWindowShouldClose(window))
 	{
 		renderer.Clear();

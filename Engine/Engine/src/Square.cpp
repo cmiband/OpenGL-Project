@@ -43,7 +43,7 @@ void Square::UnbindPropeties() const
 
 void Square::Move(const glm::vec2& vector)
 {
-	ChangePositionsArray(vector);
+	AddVectorToPositions(vector);
 	m_vb.Bind();
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 }
@@ -63,7 +63,7 @@ void Square::SetPosition(const glm::vec2& vector)
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 }
 
-void Square::ChangePositionsArray(const glm::vec2& vec)
+void Square::AddVectorToPositions(const glm::vec2& vec)
 {
 	m_positions[0] = m_positions[0] + vec.x;
 	m_positions[1] = m_positions[1] + vec.y;
