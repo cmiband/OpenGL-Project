@@ -100,6 +100,7 @@ void Circle::Move(const glm::vec2& vector)
 {
 	AddVectorToPositions(vector);
 	m_vb.Bind();
+	m_vb.RemoveData();
 	m_vb.AddData(m_numberOfVertices * 2 * sizeof(float), m_positions);
 }
 
@@ -111,5 +112,6 @@ void Circle::SetPosition(const glm::vec2& vector)
 	}
 
 	m_vb.Bind();
+	m_vb.RemoveData();
 	m_vb.AddData(m_numberOfVertices * 2 * sizeof(float), m_positions);
 }

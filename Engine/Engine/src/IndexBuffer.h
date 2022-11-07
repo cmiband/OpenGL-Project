@@ -11,6 +11,7 @@ public:
 	~IndexBuffer();
 
 	void AddData(unsigned int size, const void* data);
+	void RemoveData();
 	void Bind() const;
 	void Unbind() const;
 	inline unsigned int getSize() const{ return m_size; };

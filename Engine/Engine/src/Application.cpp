@@ -45,13 +45,19 @@ void Application::Run() {
 
 	Renderer renderer;
 
-	Circle circle(glm::vec2{100.0f, 100.0f}, 50.0f, math::Color4<float>{0.5f, 0.1f, 7.0f, 1.0f});
+	Circle circle(glm::vec2{0.0f, 0.0f}, 50.0f, math::Color4<float>{0.5f, 0.1f, 7.0f, 1.0f});
 
 	circle.UnbindPropeties();
-
+	float x = 0;
+	float y = 0;
 	while (!glfwWindowShouldClose(window))
 	{
 		renderer.Clear();
+
+		x += 0.01;
+		y += 0.01;
+		
+		circle.SetPosition(glm::vec2{ x,y });
 
 		circle.Draw(renderer);
 
