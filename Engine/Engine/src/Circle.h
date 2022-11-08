@@ -22,7 +22,8 @@ private:
 	int m_numberOfVertices;
 
 	void SetColor(Shader& sh, const math::Color4<float>& c) const;
-	void generateVerticesAndIndices(float r, float x, float y, float sides);
+	void generateVertices(float r, float x, float y, float sides);
+	void generateIndices(int numberOfVertices);
 	void AddVectorToPositions(const glm::vec2& vec);
 public:
 	Circle(const glm::vec2& position, float radius, const math::Color4<float>& color);
@@ -32,5 +33,7 @@ public:
 	void UnbindPropeties() const;
 	void Move(const glm::vec2& vector);
 	void SetPosition(const glm::vec2& vector);
+
+	inline glm::vec2 getPosition() const { return { m_positions[0],m_positions[1] }; };
 };
 
