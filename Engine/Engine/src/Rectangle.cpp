@@ -1,13 +1,14 @@
-#include "Square.h"
+#include "Rectangle.h"
 #include "Matrix.h"
+#include "Macros.h"
 
-Square::Square(const glm::vec2& position, float size, const math::Color4<float>& color) : m_size(size)
+Rectangle::Rectangle(const glm::vec2& position, float width, float height, const math::Color4<float>& color) : m_width(width), m_height(height)
 {
 	m_positions = new float[8] {
 		position.x, position.y,
-		position.x+size, position.y,
-		position.x + size,position.y + size,
-		position.x, position.y+size
+		position.x+width, position.y,
+		position.x + width,position.y + height,
+		position.x, position.y+height
 	};
 
 	unsigned int indices[6] = {
@@ -23,17 +24,17 @@ Square::Square(const glm::vec2& position, float size, const math::Color4<float>&
 	m_shader.CreatePostInitialization("res/shaders/Basic.shader");
 	SetColor(m_shader, color);
 
-	Matrix matrix(640.0f, 640.0f);
+	Matrix matrix(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	m_shader.SetUniformMatf("u_MVP", matrix.getMVP());
 }
 
-void Square::Draw(Renderer& r)
+void Rectangle::Draw(Renderer& r)
 {
 	r.Draw(m_va, m_ib, m_shader);
 }
 
-void Square::UnbindPropeties() const
+void Rectangle::UnbindPropeties() const
 {
 	m_va.Unbind();
 	m_vb.Unbind();
@@ -41,29 +42,29 @@ void Square::UnbindPropeties() const
 	m_shader.Unbind();
 }
 
-void Square::Move(const glm::vec2& vector)
+void Rectangle::Move(const glm::vec2& vector)
 {
 	AddVectorToPositions(vector);
 	m_vb.Bind();
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 }
 
-void Square::SetPosition(const glm::vec2& vector)
+void Rectangle::SetPosition(const glm::vec2& vector)
 {
 	m_positions[0] = vector.x;
 	m_positions[1] = vector.y;
-	m_positions[2] = vector.x + m_size;
+	m_positions[2] = vector.x + m_width;
 	m_positions[3] = vector.y;
-	m_positions[4] = vector.x + m_size;
-	m_positions[5] = vector.y + m_size;
+	m_positions[4] = vector.x + m_width;
+	m_positions[5] = vector.y + m_height;
 	m_positions[6] = vector.x;
-	m_positions[7] = vector.y + m_size;
+	m_positions[7] = vector.y + m_height;
 
 	m_vb.Bind();
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 }
 
-void Square::AddVectorToPositions(const glm::vec2& vec)
+void Rectangle::AddVectorToPositions(const glm::vec2& vec)
 {
 	m_positions[0] = m_positions[0] + vec.x;
 	m_positions[1] = m_positions[1] + vec.y;
@@ -75,7 +76,7 @@ void Square::AddVectorToPositions(const glm::vec2& vec)
 	m_positions[7] = m_positions[7] + vec.y;
 }
 
-void Square::SetColor(Shader& sh,const math::Color4<float>& c) const
+void Rectangle::SetColor(Shader& sh,const math::Color4<float>& c) const
 {
 	sh.SetUniform4f("u_Color", c);
 }

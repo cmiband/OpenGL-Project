@@ -42,7 +42,7 @@
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Square.cpp">
+    <ClCompile Include="src\Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Matrix.cpp">
@@ -86,7 +86,7 @@
     <ClInclude Include="src\Math\Vectors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Square.h">
+    <ClInclude Include="src\Rectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Math\vendor\glm\detail\_features.hpp">

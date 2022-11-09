@@ -41,12 +41,18 @@ int Application::startWindow(int w, int h, const std::string &t) {
 	return 0;
 }
 
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+	if (key == GLFW_KEY_E && action == GLFW_PRESS)
+		std::cout << "E" << std::endl;
+}
+
 void Application::Run() {
 
 	Renderer renderer;
 
 	Circle circle(glm::vec2{400.0f, 300.0f}, 50.0f, math::Color4<float>{0.5f, 0.1f, 0.7f, 1.0f});
 	Circle circle2(glm::vec2{ 100.0f, 100.0f }, 50.0f, math::Color4<float>{0.9f, 0.5f, 0.1f, 1.0f});
+	Rectangle rect(glm::vec2{ 300.0f, 300.0f }, 100.0f, 50.0f, math::Color4<float>{1.0f, 0.4f, 0.8f, 1.0f});
 
 	circle.UnbindPropeties();
 	bool rightX = true;
@@ -54,6 +60,7 @@ void Application::Run() {
 	float x = 1.0f;
 	float y = 1.0f;
 	glm::vec2 currentPos;
+	glfwSetKeyCallback(window, key_callback);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -92,8 +99,14 @@ void Application::Run() {
 		else if (currentPos.y < 50.0f)
 			topY = true;
 
+		int state = glfwGetKey(window, GLFW_KEY_O);
+		if (state == GLFW_PRESS) {
+			std::cout << "O" << std::endl;
+		}
+
 		circle.Draw(renderer);
 		circle2.Draw(renderer);
+		rect.Draw(renderer);
 
 		renderer.Swap(window);
 	}

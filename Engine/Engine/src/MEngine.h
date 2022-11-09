@@ -6,7 +6,7 @@
 #include "IndexBuffer.h"
 #include "Renderer.h"
 #include "Triangle.h"
-#include "Square.h"
+#include "Rectangle.h"
 #include "Math/Vectors.h"
 #include "glm.hpp"
 #include "Matrix.h"

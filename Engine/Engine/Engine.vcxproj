@@ -136,7 +136,7 @@
     <ClCompile Include="src\Circle.cpp" />
     <ClCompile Include="src\Line.cpp" />
     <ClCompile Include="src\Matrix.cpp" />
-    <ClCompile Include="src\Square.cpp" />
+    <ClCompile Include="src\Rectangle.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Application.cpp" />
@@ -723,7 +723,7 @@
     <ClInclude Include="src\Math\vendor\glm\vec3.hpp" />
     <ClInclude Include="src\Math\vendor\glm\vec4.hpp" />
     <ClInclude Include="src\Math\vendor\glm\vector_relational.hpp" />
-    <ClInclude Include="src\Square.h" />
+    <ClInclude Include="src\Rectangle.h" />
     <ClInclude Include="src\Math\Vectors.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\IndexBuffer.h" />

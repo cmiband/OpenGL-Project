@@ -75,7 +75,7 @@ Circle::Circle(const glm::vec2& position, float radius, const math::Color4<float
 	m_shader.CreatePostInitialization("res/shaders/Basic.shader");
 	SetColor(m_shader, color);
 
-	Matrix m(SCREEN_WIDTH, SCREEN_HEIGTH);
+	Matrix m(SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_shader.SetUniformMatf("u_MVP", m.getMVP());
 }
 
