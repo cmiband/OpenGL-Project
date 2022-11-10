@@ -5,6 +5,7 @@
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Shader.h"
+#include "Window.h"
 
 class Renderer
 {
@@ -15,6 +16,7 @@ public:
 	void Draw(VertexArray& va, IndexBuffer& ib, Shader& shader) const;
 	void DrawLine(VertexArray& va, IndexBuffer& ib, Shader& shader) const;
 	void Swap(GLFWwindow* w);
+	void Swap(Window& w);
 	void Clear() const;
 };
 

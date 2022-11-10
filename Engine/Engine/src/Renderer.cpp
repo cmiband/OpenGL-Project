@@ -24,6 +24,13 @@ void Renderer::Swap(GLFWwindow* w)
 	glfwPollEvents();
 }
 
+void Renderer::Swap(Window& w)
+{
+	glfwSwapBuffers(w.getGLFWwindow());
+
+	glfwPollEvents();
+}
+
 void Renderer::Clear() const {
 	GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }

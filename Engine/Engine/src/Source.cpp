@@ -1,8 +1,17 @@
 #include "Application.h"
+#include "Window.h"
+#include "MEngine.h"
 
 int main()
 {
-    Application app(640, 640, "Mikoshi");
+    Window window(680, 680, "Mikoshi");
+    Renderer r;
+
+    while (!window.shouldClose()) {
+        r.Clear();
+
+        r.Swap(window);
+    }
 
     return 0;
 }
