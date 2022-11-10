@@ -10,6 +10,5 @@ public:
 	~Keyboard(){};
 
 	static bool keyPressed(Window& window, int keyCode);
-
 };
 
