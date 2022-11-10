@@ -23,13 +23,13 @@ int Window::startWindow(int w, int h, const std::string& t) {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	window = glfwCreateWindow(w, h, t.c_str(), NULL, NULL);
-	if (!window) {
+	m_window = glfwCreateWindow(w, h, t.c_str(), NULL, NULL);
+	if (!m_window) {
 		glfwTerminate();
 		return -1;
 	}
 
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(m_window);
 
 	if (GLEW_OK != glewInit()) {
 		std::cout << "error" << std::endl;
