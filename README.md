@@ -1,6 +1,6 @@
 # OpenGL-Project
 Learning OpenGL. 
-Creating library for rendering 2D objects using.
+Creating library for rendering 2D objects.
 Using:
 -glm
 -glfw
