@@ -76,6 +76,11 @@ void Rectangle::AddVectorToPositions(const glm::vec2& vec)
 	m_positions[7] = m_positions[7] + vec.y;
 }
 
+void Rectangle::SetCorners(std::vector<std::pair<float, float>>& corners)
+{
+	
+}
+
 void Rectangle::SetColor(Shader& sh,const math::Color4<float>& c) const
 {
 	sh.SetUniform4f("u_Color", c);
