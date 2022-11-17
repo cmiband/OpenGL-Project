@@ -16,6 +16,8 @@ Rectangle::Rectangle(const glm::vec2& position, float width, float height, const
 		2,3,0
 	};
 
+	SetCorners(m_corners);
+
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
 	
 	m_va.AddBuffer(2, false, 2 * sizeof(float));
@@ -47,6 +49,8 @@ void Rectangle::Move(const glm::vec2& vector)
 	AddVectorToPositions(vector);
 	m_vb.Bind();
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
+
+	SetCorners(m_corners);
 }
 
 void Rectangle::SetPosition(const glm::vec2& vector)
@@ -62,6 +66,8 @@ void Rectangle::SetPosition(const glm::vec2& vector)
 
 	m_vb.Bind();
 	m_vb.AddData(4 * 2 * sizeof(float), m_positions);
+
+	SetCorners(m_corners);
 }
 
 void Rectangle::AddVectorToPositions(const glm::vec2& vec)
@@ -78,7 +84,15 @@ void Rectangle::AddVectorToPositions(const glm::vec2& vec)
 
 void Rectangle::SetCorners(std::vector<std::pair<float, float>>& corners)
 {
-	
+	float container;
+	for (int i = 0; i < 8; i++) {
+		if (i % 2 == 0) {
+			container = m_positions[i];
+		}
+		else {
+			corners.push_back(std::make_pair(container, m_positions[i]));
+		}
+	}
 }
 
 void Rectangle::SetColor(Shader& sh,const math::Color4<float>& c) const
