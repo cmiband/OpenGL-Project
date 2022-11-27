@@ -38,12 +38,6 @@ public:
 	inline glm::vec2 getPosition() const { return { m_positions[0],m_positions[1] }; };
 	inline std::vector<std::pair<float, float>> getCorners() const { return m_corners; };
 
-	bool collidesWith(Rectangle& rect) {
-		std::vector<std::pair<float, float>> cornersOfAnotherObject = rect.getCorners();
-
-		for (int i = 0; i < m_corners.size(); i++) {
-			
-		}
-	}
+	bool collidesWith(Rectangle& rect);
 };
 

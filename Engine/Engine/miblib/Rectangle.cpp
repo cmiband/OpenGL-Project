@@ -95,6 +95,27 @@ void Rectangle::SetCorners(std::vector<std::pair<float, float>>& corners)
 	}
 }
 
+
+bool Rectangle::collidesWith(Rectangle& rect)
+{
+	std::vector<std::pair<float, float>> targetCorners = rect.getCorners();
+
+	if (((targetCorners[0].first > m_corners[0].first) && (m_corners[1].first > targetCorners[0].first)) && ((targetCorners[0].second > m_corners[0].second) && (m_corners[2].second > targetCorners[0].second))) {
+		return true;
+	}
+	else if (((m_corners[1].first > targetCorners[0].first) && (targetCorners[1].first > m_corners[1].first)) && ((m_corners[1].second > targetCorners[1].second) && (targetCorners[2].second > m_corners[1].second))) {
+		return true;
+	}
+	else if (((m_corners[1].first>targetCorners[0].first) && (targetCorners[1].first>m_corners[1].first)) && ((m_corners[2].second>targetCorners[1].second) && (targetCorners[2].second>m_corners[2].second))) {
+		return true;
+	}
+	else if (((targetCorners[1].first>m_corners[0].first) && (targetCorners[1].first>m_corners[1].first)) && ((targetCorners[1].second>m_corners[1].second) && (targetCorners[2].second>m_corners[2].second))) {
+		return true;
+	}
+
+	return false;
+}
+
 void Rectangle::SetColor(Shader& sh,const math::Color4<float>& c) const
 {
 	sh.SetUniform4f("u_Color", c);
