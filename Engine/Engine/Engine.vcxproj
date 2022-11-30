@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="miblib\collSystem.cpp" />
     <ClCompile Include="miblib\Keyboard.cpp" />
     <ClCompile Include="miblib\Circle.cpp" />
     <ClCompile Include="miblib\Line.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="miblib\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="miblib\collSystem.h" />
     <ClInclude Include="miblib\Keyboard.h" />
     <ClInclude Include="miblib\Circle.h" />
     <ClInclude Include="miblib\Line.h" />

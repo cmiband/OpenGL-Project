@@ -57,6 +57,9 @@
     <ClCompile Include="miblib\Keyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="miblib\collSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="miblib\Macros.h">
@@ -1818,6 +1821,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="miblib\Keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="miblib\collSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
