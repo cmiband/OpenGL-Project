@@ -1,10 +1,11 @@
 #pragma once
-#include <utility>
+#include <glm.hpp>
+#include <vector>
 
 class collSystem
 {
 public:
-	bool containsOnYAxis(std::pair<float, float> object1, std::pair<float, float> object2);
-	bool containsOnXAxis(std::pair<float, float> object1, std::pair<float, float> object2);
+	static bool containsOnYAxis(std::vector<glm::vec2> objectOneCorners, std::vector<glm::vec2> objectTwoCorners);
+	static bool containsOnXAxis(std::vector<glm::vec2> objectOneCorners, std::vector<glm::vec2> objectTwoCorners);
 };
 

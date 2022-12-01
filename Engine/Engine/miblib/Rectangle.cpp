@@ -2,6 +2,8 @@
 #include "Matrix.h"
 #include "Macros.h"
 
+#include "collSystem.h"
+
 Rectangle::Rectangle(const glm::vec2& position, float width, float height, const math::Color4<float>& color) : m_width(width), m_height(height)
 {
 	m_positions = new float[8] {
@@ -82,7 +84,7 @@ void Rectangle::AddVectorToPositions(const glm::vec2& vec)
 	m_positions[7] = m_positions[7] + vec.y;
 }
 
-void Rectangle::SetCorners(std::vector<std::pair<float, float>>& corners)
+void Rectangle::SetCorners(std::vector<glm::vec2>& corners)
 {
 	float container;
 	for (int i = 0; i < 8; i++) {
@@ -90,7 +92,7 @@ void Rectangle::SetCorners(std::vector<std::pair<float, float>>& corners)
 			container = m_positions[i];
 		}
 		else {
-			corners.push_back(std::make_pair(container, m_positions[i]));
+			corners.push_back(glm::vec2{container, m_positions[i]});
 		}
 	}
 }
@@ -98,18 +100,9 @@ void Rectangle::SetCorners(std::vector<std::pair<float, float>>& corners)
 
 bool Rectangle::collidesWith(Rectangle& rect)
 {
-	std::vector<std::pair<float, float>> targetCorners = rect.getCorners();
+	std::vector<glm::vec2> targetCorners = rect.getCorners();
 
-	if (((targetCorners[0].first > m_corners[0].first) && (m_corners[1].first > targetCorners[0].first)) && ((targetCorners[0].second > m_corners[0].second) && (m_corners[2].second > targetCorners[0].second))) {
-		return true;
-	}
-	else if (((m_corners[1].first > targetCorners[0].first) && (targetCorners[1].first > m_corners[1].first)) && ((m_corners[1].second > targetCorners[1].second) && (targetCorners[2].second > m_corners[1].second))) {
-		return true;
-	}
-	else if (((m_corners[1].first>targetCorners[0].first) && (targetCorners[1].first>m_corners[1].first)) && ((m_corners[2].second>targetCorners[1].second) && (targetCorners[2].second>m_corners[2].second))) {
-		return true;
-	}
-	else if (((targetCorners[1].first>m_corners[0].first) && (targetCorners[1].first>m_corners[1].first)) && ((targetCorners[1].second>m_corners[1].second) && (targetCorners[2].second>m_corners[2].second))) {
+	if (collSystem::containsOnXAxis(m_corners, targetCorners) && collSystem::containsOnYAxis(m_corners, targetCorners)) {
 		return true;
 	}
 
