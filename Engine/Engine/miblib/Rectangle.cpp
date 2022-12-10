@@ -87,12 +87,13 @@ void Rectangle::AddVectorToPositions(const glm::vec2& vec)
 void Rectangle::SetCorners(std::vector<glm::vec2>& corners)
 {
 	float container;
+	corners.clear();
 	for (int i = 0; i < 8; i++) {
 		if (i % 2 == 0) {
 			container = m_positions[i];
 		}
 		else {
-			corners.push_back(glm::vec2{container, m_positions[i]});
+			corners.push_back(glm::vec2{ container, m_positions[i] });
 		}
 	}
 }
