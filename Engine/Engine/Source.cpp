@@ -10,19 +10,6 @@ int main()
     Rectangle rect(glm::vec2{ 500.0f, 500.0f }, 50.0f, 100.0f, math::Color4<float>{0.1f, 0.2f, 0.3f, 1.0f});
     Rectangle rect2(glm::vec2{ 100.0f, 410.0f }, 50.0f, 100.0f, math::Color4<float>{0.5f, 0.3f, 0.1f, 1.0f});
 
-    std::vector<glm::vec2> tab = { 
-        glm::vec2{500.0f, 500.0f},
-        glm::vec2{550.0f, 500.0f},
-        glm::vec2{550.0f, 600.0f},
-        glm::vec2{500.0f, 600.0f}
-    };
-    std::vector<glm::vec2> tab2 = { 
-        glm::vec2{475.0f, 50.0f},
-        glm::vec2{525.0f, 50.0f},
-        glm::vec2{525.0f, 125.0f},
-        glm::vec2{475.0f, 125.0f}
-    };
-
     float posX = rect.getPosition().x;
     float diff = 2.0f;
     bool dir = true;
