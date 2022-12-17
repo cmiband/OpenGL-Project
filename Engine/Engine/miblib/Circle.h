@@ -7,6 +7,7 @@
 #include "Matrix.h"
 #include "Renderer.h"
 #include "glm.hpp"
+#include <vector>
 
 class Circle
 {
@@ -18,12 +19,11 @@ private:
 	float* m_positions;
 	unsigned int* m_indices;
 	float m_radius;
-
 	int m_numberOfVertices;
 
 	void SetColor(Shader& sh, const math::Color4<float>& c) const;
-	void generateVertices(float r, float x, float y, float sides);
-	void generateIndices(int numberOfVertices);
+	void GenerateVertices(float r, float x, float y, float sides);
+	void GenerateIndices(int numberOfVertices);
 	void AddVectorToPositions(const glm::vec2& vec);
 public:
 	Circle(const glm::vec2& position, float radius, const math::Color4<float>& color);
@@ -34,6 +34,6 @@ public:
 	void Move(const glm::vec2& vector);
 	void SetPosition(const glm::vec2& vector);
 
-	inline glm::vec2 getPosition() const { return { m_positions[0],m_positions[1] }; };
+	inline glm::vec2 GetPosition() const { return { m_positions[0],m_positions[1] }; };
 };
 

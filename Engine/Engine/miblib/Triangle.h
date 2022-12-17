@@ -31,6 +31,6 @@ public:
 	void Move(const glm::vec2& vector);
 	void SetPosition(const glm::vec2& vector);
 
-	inline glm::vec2 getPosition() const { return { m_positions[0],m_positions[1] }; };
+	inline glm::vec2 GetPosition() const { return { m_positions[0],m_positions[1] }; };
 };
 

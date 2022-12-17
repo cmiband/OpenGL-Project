@@ -7,7 +7,7 @@ void Circle::SetColor(Shader& sh, const math::Color4<float>& c) const {
 	sh.SetUniform4f("u_Color", c);
 };
 
-void Circle::generateVertices(float r, float x, float y, float sides)
+void Circle::GenerateVertices(float r, float x, float y, float sides)
 {
 	int numberOfVertices = sides + 2;
 	m_numberOfVertices = numberOfVertices;
@@ -34,7 +34,7 @@ void Circle::generateVertices(float r, float x, float y, float sides)
 	delete[] circleVerticesY;
 }
 
-void Circle::generateIndices(int numberOfVertices)
+void Circle::GenerateIndices(int numberOfVertices)
 {
 	m_indices = new unsigned int[3 * numberOfVertices];
 	int c = 0;
@@ -64,8 +64,8 @@ void Circle::generateIndices(int numberOfVertices)
 
 Circle::Circle(const glm::vec2& position, float radius, const math::Color4<float>& color) : m_radius(radius), m_numberOfVertices(0)
 {
-	generateVertices(radius, position.x, position.y, 360);
-	generateIndices(m_numberOfVertices);
+	GenerateVertices(radius, position.x, position.y, 360);
+	GenerateIndices(m_numberOfVertices);
 
 	m_vb.AddData(m_numberOfVertices * 2 * sizeof(float), m_positions);
 
@@ -110,7 +110,7 @@ void Circle::Move(const glm::vec2& vector)
 
 void Circle::SetPosition(const glm::vec2& vector)
 {
-	generateVertices(m_radius, vector.x, vector.y, 360);
+	GenerateVertices(m_radius, vector.x, vector.y, 360);
 
 	m_vb.Bind();
 	m_vb.RemoveData();

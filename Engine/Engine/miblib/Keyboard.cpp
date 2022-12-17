@@ -1,6 +1,6 @@
 #include "Keyboard.h"
 
-bool Keyboard::keyPressed(Window& window, int keyCode)
+bool Keyboard::KeyPressed(Window& window, int keyCode)
 {
 	int state = glfwGetKey(window.getGLFWwindow(), keyCode);
 

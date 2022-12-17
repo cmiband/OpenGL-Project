@@ -34,8 +34,8 @@ public:
 	void Move(const glm::vec2& vector);
 	void SetPosition(const glm::vec2& vector);
 
-	inline glm::vec2 getPosition() const { return { m_positions[0],m_positions[1] }; };
-	inline std::vector<glm::vec2> getCorners() const { return m_corners; };
-	bool collidesWith(Rectangle& rect);
+	inline glm::vec2 GetPosition() const { return { m_positions[0],m_positions[1] }; };
+	inline std::vector<glm::vec2> GetCorners() const { return m_corners; };
+	bool CollidesWith(Rectangle& rect);
 };
 

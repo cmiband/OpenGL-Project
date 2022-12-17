@@ -9,6 +9,6 @@ public:
 	Keyboard(){};
 	~Keyboard(){};
 
-	static bool keyPressed(Window& window, int keyCode);
+	static bool KeyPressed(Window& window, int keyCode);
 };
 

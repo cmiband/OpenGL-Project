@@ -99,9 +99,9 @@ void Rectangle::SetCorners(std::vector<glm::vec2>& corners)
 }
 
 
-bool Rectangle::collidesWith(Rectangle& rect)
+bool Rectangle::CollidesWith(Rectangle& rect)
 {
-	std::vector<glm::vec2> targetCorners = rect.getCorners();
+	std::vector<glm::vec2> targetCorners = rect.GetCorners();
 
 	if (collSystem::containsOnXAxis(m_corners, targetCorners) && collSystem::containsOnYAxis(m_corners, targetCorners)) {
 		return true;
