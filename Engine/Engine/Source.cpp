@@ -9,7 +9,7 @@ int main()
 
     float ballWidth = 10.0f;
     float racketWidth = 80.0f;
-    Rectangle ball(glm::vec2{ 80.0f, 10.0f }, ballWidth, ballWidth, math::Color4<float>{0.1f, 0.1f, 0.9f, 1.0f});
+    Rectangle ball(glm::vec2{ 400.0f, 10.0f }, ballWidth, ballWidth, math::Color4<float>{0.1f, 0.1f, 0.9f, 1.0f});
     Rectangle racket(glm::vec2{ SCREEN_WIDTH / 2, 30.0f }, racketWidth, 10.0f, math::Color4<float>{0.5f, 0.9f, 0.1f, 1.0f});
 
     float ballSpeedX = 5.0f;
@@ -38,7 +38,7 @@ int main()
             moveUp = true;
             std::cout << "Collision" << std::endl;
         }
-
+        
         if (moveRight) {
             ballSpeedX = 5.0f;
         }

@@ -24,6 +24,10 @@ bool collSystem::containsOnXAxis(std::vector<glm::vec2>& objectOneCorners, std::
         return true;
     }
 
+    if (objectOneXPos0 < objectTwoXPos0 && objectOneXPos1 > objectTwoXPos1) {
+        return true;
+    }
+
     return false;
 }
 
@@ -49,6 +53,10 @@ bool collSystem::containsOnYAxis(std::vector<glm::vec2>& objectOneCorners, std::
     }
     
     if (objectOneYPos0 == objectTwoYPos0 && objectOneYPos2 == objectTwoYPos2) {
+        return true;
+    }
+
+    if (objectOneYPos0 < objectTwoYPos0 && objectOneYPos2 > objectTwoYPos2) {
         return true;
     }
 
