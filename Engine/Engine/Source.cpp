@@ -12,6 +12,11 @@ int main()
     Rectangle ball(glm::vec2{ 400.0f, 10.0f }, ballWidth, ballWidth, math::Color4<float>{0.1f, 0.1f, 0.9f, 1.0f});
     Rectangle racket(glm::vec2{ SCREEN_WIDTH / 2, 30.0f }, racketWidth, 10.0f, math::Color4<float>{0.5f, 0.9f, 0.1f, 1.0f});
 
+    const float space = 6.6f;
+    const float bigSquareWidth = 50.0f;
+    const float middleSquareWidth = 35.0f;
+    const float smallSquareWidth = 20.0f;
+
     float ballSpeedX = 5.0f;
     float ballSpeedY = 5.0f;
     float racketSpeed = 5.0f;
@@ -36,6 +41,13 @@ int main()
 
         if (racket.CollidesWith(ball)) {
             moveUp = true;
+            glm::vec2 ballPosition = ball.GetPosition();
+            if (ballPosition.x < racket.GetPosition().x + racketWidth/2) {
+                moveRight = false;
+            }
+            else{
+                moveRight = true;
+            }
             std::cout << "Collision" << std::endl;
         }
         
