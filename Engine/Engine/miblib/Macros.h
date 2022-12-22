@@ -7,7 +7,7 @@
     x;\
     ASSERT(GLLogCall(#x, __FILE__, __LINE__))
 
-#define SCREEN_WIDTH 640.0f
+#define SCREEN_WIDTH 1000.0f
 #define SCREEN_HEIGHT 640.0f
 
 void GLClearError();

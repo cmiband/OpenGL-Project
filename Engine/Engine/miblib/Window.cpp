@@ -13,6 +13,7 @@ Window::Window(int width, int height, const std::string& title) {
 
 Window::~Window() {
 	glfwTerminate();
+	delete m_window;
 };
 
 int Window::startWindow(int w, int h, const std::string& t) {

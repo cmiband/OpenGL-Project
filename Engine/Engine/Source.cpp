@@ -1,25 +1,81 @@
 #include "miblib/miblib.h"
+#include <stdlib.h>
+#include <time.h>
 #include <vector>
-
 
 int main()
 {
     Window window(SCREEN_WIDTH, SCREEN_HEIGHT, "Mikoshi");
     Renderer r;
 
-    float ballWidth = 10.0f;
-    float racketWidth = 80.0f;
+    srand(time(NULL));
+
+    float ballWidth = 20.0f;
+    float racketWidth = 160.0f;
     Rectangle ball(glm::vec2{ 400.0f, 10.0f }, ballWidth, ballWidth, math::Color4<float>{0.1f, 0.1f, 0.9f, 1.0f});
     Rectangle racket(glm::vec2{ SCREEN_WIDTH / 2, 30.0f }, racketWidth, 10.0f, math::Color4<float>{0.5f, 0.9f, 0.1f, 1.0f});
 
-    const float space = 6.6f;
-    const float bigSquareWidth = 50.0f;
-    const float middleSquareWidth = 35.0f;
-    const float smallSquareWidth = 20.0f;
+    const int numberOfRectsInARow = 16;
+    const float space = 6.25f;
+    const float bigRectWidth = 100.0f;
+    const float middleRectWidth = 50.0f;
+    const float smallRectWidth = 40.0f;
+    const float rectHeight = 50.0f;
+    float possibilities[] = {300.0f, 400.0f, 200.0f};
+    float offsetX = 0;
+    std::vector<Rectangle> blocks;
+    blocks.push_back(Rectangle(glm::vec2{offsetX, 400.0f}, bigRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
 
-    float ballSpeedX = 5.0f;
-    float ballSpeedY = 5.0f;
-    float racketSpeed = 5.0f;
+    /*bool canAddNewRect = true;
+    for (int i = 0; i < numberOfRectsInARow; i++) {
+        int randomNumber = rand() % 2 + 0;
+        if (possibilities[randomNumber] > 0) {
+            canAddNewRect = true;
+        }
+        else {
+            int spaceLeftFirst = possibilities[0];
+            int spaceLeftSecond = possibilities[1];
+            int spaceLeftThird = possibilities[2];
+
+            if (spaceLeftFirst > 0) {
+                randomNumber = 0;
+                canAddNewRect = true;
+            }
+            else if (spaceLeftSecond > 0) {
+                randomNumber = 1;
+                canAddNewRect = true;
+            }
+            else if (spaceLeftThird > 0) {
+                randomNumber = 2;
+                canAddNewRect = true;
+            }
+            else break;
+        }
+
+        if (canAddNewRect) {
+            switch (randomNumber) {
+            case 0:
+                blocks.push_back(Rectangle(glm::vec2{ offsetX,400.0f }, bigRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
+                offsetX += bigRectWidth + space;
+                possibilities[randomNumber] -= bigRectWidth;
+                break;
+            case 1:
+                blocks.push_back(Rectangle(glm::vec2{ offsetX,400.0f }, middleRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
+                offsetX += middleRectWidth + space;
+                possibilities[randomNumber] -= middleRectWidth;
+                break;
+            case 2:
+                blocks.push_back(Rectangle(glm::vec2{ offsetX,400.0f }, smallRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
+                offsetX += smallRectWidth + space;
+                possibilities[randomNumber] -= smallRectWidth;
+                break;
+            }
+        }
+    }*/
+
+    float ballSpeedX = 8.0f;
+    float ballSpeedY = 8.0f;
+    float racketSpeed = 12.0f;
     bool moveUp = true;
     bool moveRight = true;
 
@@ -75,6 +131,7 @@ int main()
 
         ball.Draw(r);
         racket.Draw(r);
+        blocks[0].Draw(r);
 
         r.Swap(window);
     }
