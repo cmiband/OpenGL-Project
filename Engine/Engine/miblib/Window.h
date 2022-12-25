@@ -14,6 +14,7 @@ public:
 	Window(int width, int height, const std::string& title);
 	~Window();
 
+	void CloseWindow();
 	inline int shouldClose() const { return glfwWindowShouldClose(m_window); };
 	inline GLFWwindow* getGLFWwindow() const { return m_window; };
 };

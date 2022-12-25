@@ -23,55 +23,49 @@ int main()
     const float rectHeight = 50.0f;
     float possibilities[] = {300.0f, 400.0f, 200.0f};
     float offsetX = 0;
-    std::vector<Rectangle> blocks;
-    blocks.push_back(Rectangle(glm::vec2{offsetX, 400.0f}, bigRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
-
-    /*bool canAddNewRect = true;
+    std::vector<Rectangle*> blocks;
+    float offsetTest = 0.0f;
+    
+    bool canAddNewRect = true;
     for (int i = 0; i < numberOfRectsInARow; i++) {
         int randomNumber = rand() % 2 + 0;
-        if (possibilities[randomNumber] > 0) {
-            canAddNewRect = true;
-        }
-        else {
+
+        if(possibilities[randomNumber] <= 0) {
             int spaceLeftFirst = possibilities[0];
             int spaceLeftSecond = possibilities[1];
             int spaceLeftThird = possibilities[2];
 
             if (spaceLeftFirst > 0) {
                 randomNumber = 0;
-                canAddNewRect = true;
             }
             else if (spaceLeftSecond > 0) {
                 randomNumber = 1;
-                canAddNewRect = true;
             }
             else if (spaceLeftThird > 0) {
                 randomNumber = 2;
-                canAddNewRect = true;
             }
             else break;
         }
-
-        if (canAddNewRect) {
-            switch (randomNumber) {
-            case 0:
-                blocks.push_back(Rectangle(glm::vec2{ offsetX,400.0f }, bigRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
-                offsetX += bigRectWidth + space;
-                possibilities[randomNumber] -= bigRectWidth;
-                break;
-            case 1:
-                blocks.push_back(Rectangle(glm::vec2{ offsetX,400.0f }, middleRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
-                offsetX += middleRectWidth + space;
-                possibilities[randomNumber] -= middleRectWidth;
-                break;
-            case 2:
-                blocks.push_back(Rectangle(glm::vec2{ offsetX,400.0f }, smallRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f}));
-                offsetX += smallRectWidth + space;
-                possibilities[randomNumber] -= smallRectWidth;
-                break;
-            }
+        
+        if(randomNumber == 0){
+            Rectangle *rect = new Rectangle(glm::vec2{ offsetX,400.0f }, bigRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f});
+            blocks.push_back(rect);
+            offsetX += bigRectWidth + space;
+            possibilities[randomNumber] -= bigRectWidth;
         }
-    }*/
+        else if(randomNumber == 1) {
+            Rectangle *rect = new Rectangle(glm::vec2{ offsetX,400.0f }, middleRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f});
+            blocks.push_back(rect);
+            offsetX += middleRectWidth + space;
+            possibilities[randomNumber] -= middleRectWidth;
+        }
+        else if(randomNumber == 2) {
+            Rectangle *rect = new Rectangle(glm::vec2{ offsetX,400.0f }, smallRectWidth, rectHeight, math::Color4<float>{1.0f, 0.0f, 0.0f, 1.0f});
+            blocks.push_back(rect);
+            offsetX += smallRectWidth + space;
+            possibilities[randomNumber] -= smallRectWidth;
+        }
+    }
 
     float ballSpeedX = 8.0f;
     float ballSpeedY = 8.0f;
@@ -131,10 +125,11 @@ int main()
 
         ball.Draw(r);
         racket.Draw(r);
-        blocks[0].Draw(r);
+        for (int i = 0; i < blocks.size(); i++) {
+            blocks[i]->Draw(r);
+        }
 
         r.Swap(window);
     }
-
     return 0;
 }

@@ -14,7 +14,13 @@ Window::Window(int width, int height, const std::string& title) {
 Window::~Window() {
 	glfwTerminate();
 	delete m_window;
-};
+}
+
+void Window::CloseWindow()
+{
+	glfwTerminate();
+	delete m_window;
+}
 
 int Window::startWindow(int w, int h, const std::string& t) {
 	if (!glfwInit()) return -1;
@@ -25,6 +31,7 @@ int Window::startWindow(int w, int h, const std::string& t) {
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	m_window = glfwCreateWindow(w, h, t.c_str(), NULL, NULL);
+
 	if (!m_window) {
 		glfwTerminate();
 		return -1;
