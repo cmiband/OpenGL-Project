@@ -17,7 +17,7 @@ private:
 	VertexBuffer m_vb;
 	IndexBuffer m_ib;
 	Shader m_shader;
-	float *m_positions;
+	float* m_positions;
 	float m_width;
 	float m_height;
 	std::vector<glm::vec2> m_corners;
@@ -37,5 +37,7 @@ public:
 	inline glm::vec2 GetPosition() const { return { m_positions[0],m_positions[1] }; };
 	inline std::vector<glm::vec2> GetCorners() const { return m_corners; };
 	bool CollidesWith(Rectangle& rect);
+	inline float GetWidth() const {return m_width;}
+	inline float GetHeight() const {return m_height;}
 };
 
