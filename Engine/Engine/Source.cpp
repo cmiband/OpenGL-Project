@@ -84,17 +84,19 @@ int main()
     srand(time(NULL));
 
     float ballWidth = 20.0f;
-    float racketWidth = 160.0f;
+    const float racketWidth = 160.0f;
+    const float racketHeight = 10.0f;
     Rectangle ball(glm::vec2{ 400.0f, 10.0f }, ballWidth, ballWidth, math::Color4<float>{0.1f, 0.1f, 0.9f, 1.0f});
-    Rectangle racket(glm::vec2{ SCREEN_WIDTH / 2, 30.0f }, racketWidth, 10.0f, math::Color4<float>{0.5f, 0.9f, 0.1f, 1.0f});
+    Rectangle racket(glm::vec2{ SCREEN_WIDTH / 2, 30.0f }, racketWidth, racketHeight, math::Color4<float>{0.5f, 0.9f, 0.1f, 1.0f});
     const float rectHeight = 50.0f;
 
     std::vector<Rectangle*> blocks;
     BuildGame(blocks, rectHeight);
 
+    const float defaultSpeed = 4.0f;
     int amountOfLives = 3;
-    float ballSpeedX = 4.0f;
-    float ballSpeedY = 4.0f;
+    float ballSpeedX = defaultSpeed;
+    float ballSpeedY = defaultSpeed;
     float racketSpeed = 12.0f;
     bool moveUp = true;
     bool moveRight = true;
@@ -107,11 +109,11 @@ int main()
             BuildGame(blocks, rectHeight);
             ball.SetPosition(glm::vec2{ SCREEN_WIDTH / 2, 150.0f });
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-            setBallSpeedY(ballSpeedY, 4.0f);
+            setBallSpeedY(ballSpeedY, defaultSpeed);
         }
 
         if (ball.GetPosition().y >= SCREEN_HEIGHT - ballWidth) {
-            setBallSpeedY(ballSpeedY, -4.0f);
+            setBallSpeedY(ballSpeedY, -defaultSpeed);
         }
         if (ball.GetPosition().y <= 0) {
             amountOfLives--;
@@ -121,23 +123,23 @@ int main()
             }
             ball.SetPosition(glm::vec2{ SCREEN_WIDTH / 2, 150.0f });
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-            setBallSpeedY(ballSpeedY, 4.0f);
+            setBallSpeedY(ballSpeedY, defaultSpeed);
         }
         if (ball.GetPosition().x >= SCREEN_WIDTH - ballWidth) {
-            setBallSpeedX(ballSpeedX, -4.0f);
+            setBallSpeedX(ballSpeedX, -defaultSpeed);
         }
         if (ball.GetPosition().x <= 0) {
-            setBallSpeedX(ballSpeedX, 4.0f);
+            setBallSpeedX(ballSpeedX, defaultSpeed);
         }
 
         if (racket.CollidesWith(ball)) {
-            setBallSpeedY(ballSpeedY, 4.0f);
+            setBallSpeedY(ballSpeedY, defaultSpeed);
             glm::vec2 ballPosition = ball.GetPosition();
             if (ballPosition.x < racket.GetPosition().x + racketWidth/2) {
-                setBallSpeedX(ballSpeedX, -4.0f);
+                setBallSpeedX(ballSpeedX, -defaultSpeed);
             }
             else{
-                setBallSpeedX(ballSpeedX, 4.0f);
+                setBallSpeedX(ballSpeedX, defaultSpeed);
             }
             std::cout << "Collision" << std::endl;
         }
@@ -159,17 +161,17 @@ int main()
                 glm::vec2 blockPos = blocks[i]->GetPosition();
                 glm::vec2 ballPos = ball.GetPosition();
                 if (blockPos.y >= ballPos.y) {
-                    setBallSpeedY(ballSpeedY, -4.0f);
+                    setBallSpeedY(ballSpeedY, -defaultSpeed);
                 }
                 else if(ballPos.y >= blockPos.y+rectHeight) {
-                    setBallSpeedY(ballSpeedY, 4.0f);
+                    setBallSpeedY(ballSpeedY, defaultSpeed);
                 }
 
                 if (blockPos.x >= ballPos.x) {
-                    setBallSpeedX(ballSpeedX, -4.0f);
+                    setBallSpeedX(ballSpeedX, -defaultSpeed);
                 }
                 else if(ballPos.x >= blockPos.x + blocks[i]->GetWidth()) {
-                    setBallSpeedX(ballSpeedX, 4.0f);
+                    setBallSpeedX(ballSpeedX, defaultSpeed);
                 }
                 blocks.erase(blocks.begin()+i, blocks.begin()+i+1);
             }
